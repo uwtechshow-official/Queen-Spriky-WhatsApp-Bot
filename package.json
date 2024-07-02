@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.5",
+    "axios": "^1.7.2",
+    "facebook-video-downloader": "^1.0.1",
+    "fast-speedtest-api": "^0.3.2",
+    "g-i-s": "^2.1.7",
+    "node-fetch": "^3.3.2",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.32.6",
+    "tiktok-scraper": "^1.4.36",
+    "unsplash-js": "^7.0.19",
+    "webp-converter": "^2.3.3",
+    "ytdl-core": "^4.11.5"
+  },
+  "name": "status-queen-whatsapp-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "This Is A Status Seen WhatsApp Bot Developed By Udavin"
+}
