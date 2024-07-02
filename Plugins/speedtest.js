@@ -1,3 +1,4 @@
+const config = require('../config'); // Adjust path as necessary
 const FastSpeedtest = require('fast-speedtest-api');
 
 async function handleSpeedtestCommand(sock, message) {
@@ -7,7 +8,7 @@ async function handleSpeedtestCommand(sock, message) {
 
         if (text?.trim() === '.speedtest') {
             const speedtest = new FastSpeedtest({
-                token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // Replace with your actual Fast.com API token
+                token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', 
                 verbose: false,
                 timeout: 10000,
                 https: true,
@@ -20,8 +21,9 @@ async function handleSpeedtestCommand(sock, message) {
 
             try {
                 const speed = await speedtest.getSpeed();
-                const resultMessage = `Download speed: ${speed.toFixed(2)} Mbps`;
+                const resultMessage = `Download speed: ${speed.toFixed(2)} Mbps\n\n> ${config.botFooter}`;
                 await sock.sendMessage(from, { text: resultMessage });
+                console.log(`Speed test result sent to ${from}`);
             } catch (err) {
                 console.error('Speed test error:', err);
                 await sock.sendMessage(from, { text: 'Error occurred during speed test.' });
@@ -29,6 +31,7 @@ async function handleSpeedtestCommand(sock, message) {
         }
     } catch (error) {
         console.error('Error in speed test command:', error);
+        await sock.sendMessage(from, { text: 'Error occurred while processing the speed test command.' });
     }
 }
 

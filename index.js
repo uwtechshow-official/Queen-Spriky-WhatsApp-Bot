@@ -3,12 +3,23 @@ const { Boom } = require('@hapi/boom');
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const sharp = require('sharp');
-const config = require('./config'); // Assuming config file is in the same directory
-const handleStatusSeen = require('./plugins/statusSeen').handleStatusSeen;
-const handleAliveCommand = require('./plugins/alive');
-const handleMenuCommand = require('./plugins/menu');
-const handlePingCommand = require('./plugins/ping');
-const handleSpeedtestCommand = require('./plugins/speedtest');
+const config = require('./config'); 
+const handleStatusSeen = require('./Plugins/statusSeen').handleStatusSeen;
+const handleAliveCommand = require('./Plugins/alive');
+const handleMenuCommand = require('./Plugins/menu');
+const handlePingCommand = require('./Plugins/ping');
+const handleSpeedtestCommand = require('./Plugins/speedtest');
+const handleUptimeCommand = require('./Plugins/uptime').handleUptimeCommand; 
+const handleJokeCommand = require('./Plugins/joke');
+const handleQuoteCommand = require('./Plugins/quote');
+const handleWikiCommand = require('./Plugins/wiki');
+const handleDictionaryCommand = require('./Plugins/dictionary');
+const handleTriviaCommand = require('./Plugins/trivia');
+const handleNewsCommand = require('./Plugins/news');
+const handleMovieCommand = require('./Plugins/movie');
+const handleReadReceiptsCommand = require('./plugins/readReceipts');
+
+let botStartTime = Date.now(); 
 
 async function startBot() {
     console.clear();
@@ -30,23 +41,23 @@ async function startBot() {
                 const shouldReconnect = lastDisconnect.error instanceof Boom ? lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut : true;
                 if (shouldReconnect) {
                     console.log('Connection closed, attempting to reconnect...');
-                    setTimeout(startBot, 5000); // Delayed reconnect attempt to avoid rapid retries
+                    setTimeout(startBot, 5000); 
                 }
             } else if (connection === 'open') {
                 console.clear();
                 console.log('Connected');
                 const botNumber = `${config.botNumber}@s.whatsapp.net`;
-                const imagePath = 'Media/logo.jpg'; // Replace with your actual image path
+                const imagePath = 'Media/logo.jpg'; 
 
                 try {
                     const imageBuffer = fs.readFileSync(imagePath);
                     const resizedImageBuffer = await sharp(imageBuffer)
-                        .resize({ width: 300 }) // Resize image if necessary
+                        .resize({ width: 300 }) 
                         .toBuffer();
 
                     await sock.sendMessage(botNumber, {
                         image: resizedImageBuffer,
-                        caption: `STATUS QUEEN BOT IS CONNECTED SUCCESSFULLY 🥳\n 🤖 Bot Name : *${config.botName}*\n 🤖 Bot Number : ${config.botNumber} \n 🤖 Developed By : *Udavin* \n Made With Love ❤️\n If You Want Help Join Our WhatsApp Group I am Ready To Help\n\n https://chat.whatsapp.com/EieFsPEnrPnERM6GXPF162`
+                        caption: `STATUS QUEEN BOT IS CONNECTED 🥳...\n 🤖 Bot Name : *${config.botName}*\n 🤖 Bot Number : ${config.botNumber} \n 🤖 Developed By : *Udavin* \n Made With Love ❤️\n If You Want Help Join Our WhatsApp Group I am Ready To Help\n\n https://chat.whatsapp.com/EieFsPEnrPnERM6GXPF162`
                     });
                     console.log('Initial status message sent successfully.');
                 } catch (error) {
@@ -64,10 +75,19 @@ async function startBot() {
                 }
 
                 await handleStatusSeen(sock, message);
-                await handleAliveCommand(sock, message); // Handle the alive command
-                await handleMenuCommand(sock, message); // Handle the menu command
-                await handlePingCommand(sock, message); // Handle the ping command
-                await handleSpeedtestCommand(sock, message); // Handle speedtest command
+                await handleAliveCommand(sock, message, botStartTime);
+                await handleMenuCommand(sock, message);
+                await handlePingCommand(sock, message);
+                await handleSpeedtestCommand(sock, message);
+                await handleUptimeCommand(sock, message, botStartTime);
+                await handleJokeCommand(sock, message);
+                await handleQuoteCommand(sock, message);
+                await handleWikiCommand(sock, message);
+                await handleDictionaryCommand(sock, message);
+                await handleTriviaCommand(sock, message);
+                await handleNewsCommand(sock, message);
+                await handleMovieCommand(sock, message);
+                await handleReadReceiptsCommand(sock, message);
             }
         });
     } catch (error) {

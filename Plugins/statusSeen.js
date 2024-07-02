@@ -1,3 +1,4 @@
+const config = require('.././config'); 
 let autoStatusSeenEnabled = true;
 
 async function handleStatusSeen(sock, message) {
@@ -24,10 +25,10 @@ async function handleCommands(sock, message, config) {
                 console.log('Command received from bot or owner.');
                 if (conversation === '.statusseen off') {
                     toggleAutoStatusSeen(false);
-                    await sock.sendMessage(message.key.remoteJid, { text: 'Auto status seen has been disabled.' });
+                    await sock.sendMessage(message.key.remoteJid, { text: 'Auto status seen has been disabled.\n \n> ${config.botFooter}' });
                 } else if (conversation === '.statusseen on') {
                     toggleAutoStatusSeen(true);
-                    await sock.sendMessage(message.key.remoteJid, { text: 'Auto status seen has been enabled.' });
+                    await sock.sendMessage(message.key.remoteJid, { text: 'Auto status seen has been enabled.\n \n> ${config.botFooter}' });
                 }
             } else {
                 console.log('Unauthorized command attempt.');

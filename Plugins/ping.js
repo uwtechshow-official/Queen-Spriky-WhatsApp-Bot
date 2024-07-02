@@ -1,3 +1,4 @@
+const config = require('.././config'); 
 module.exports = async (sock, message) => {
     const remoteJid = message.key.remoteJid;
     const msg = message.message;
@@ -19,9 +20,9 @@ module.exports = async (sock, message) => {
         const ping = end - start;
   
         await sock.sendMessage(remoteJid, {
-          text: `Pong! 🏓\nServer response time: ${ping}ms`
+          text: `Pong! 🏓\nServer response time: ${ping}ms\n \n> ${config.botFooter}`
         });
-        console.log('Ping command message sent successfully.');
+        console.log(`Received command from ${senderNumber}: ${conversation}`);
       } catch (error) {
         console.error('Failed to send ping command message:', error);
       }

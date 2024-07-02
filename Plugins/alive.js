@@ -1,33 +1,40 @@
+const config = require('.././config'); 
 const fs = require('fs');
 const sharp = require('sharp');
-const path = require('path');
 
-module.exports = async (sock, message) => {
-  const remoteJid = message.key.remoteJid;
-  const msg = message.message;
+function formatDuration(ms) {
+    const seconds = Math.floor((ms / 1000) % 60);
+    const minutes = Math.floor((ms / (1000 * 60)) % 60);
+    const hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
 
-  if (!remoteJid || !msg) {
-    console.error('remoteJid or message content is undefined');
-    return;
-  }
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
 
-  const text = msg.conversation || msg.extendedTextMessage?.text;
-  if (text && text.trim() === '.alive') {
-    const imagePath = path.join(__dirname, '../media/alive.jpg'); // Update with your actual image path
+async function handleAliveCommand(sock, message, botStartTime) {
+    if (message.message.conversation.startsWith('.alive')) {
+        const currentTime = Date.now();
+        const uptime = currentTime - botStartTime;
+        const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
 
-    try {
-      const imageBuffer = fs.readFileSync(imagePath);
-      const resizedImageBuffer = await sharp(imageBuffer)
-        .resize({ width: 300 }) // Resize image if necessary
-        .toBuffer();
+        const imagePath = 'Media/alive.jpg'; // Replace with your actual image path
+        try {
+            const imageBuffer = fs.readFileSync(imagePath);
+            const resizedImageBuffer = await sharp(imageBuffer)
+                .resize({ width: 300 }) // Resize image if necessary
+                .toBuffer();
 
-      await sock.sendMessage(remoteJid, {
-        image: resizedImageBuffer,
-        caption: `Hi I am Alive How Can I help you?\n Type As *.menu* to get my command list`
-      });
-      console.log('Alive command message sent successfully.');
-    } catch (error) {
-      console.error('Failed to send alive command message:', error);
+            const caption = `Hi I am Alive.\n Type *.menu* to get my command list\n\n Uptime: ${uptimeMessage} \n\n> ${config.botFooter}`;
+
+            await sock.sendMessage(message.key.remoteJid, {
+                image: resizedImageBuffer,
+                caption: caption
+            });
+            console.log(`Received command from ${senderNumber}: ${conversation}`);
+        } catch (error) {
+            console.error('Failed to send alive message:', error);
+        }
     }
-  }
-};
+}
+
+module.exports = handleAliveCommand;
