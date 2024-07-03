@@ -34,6 +34,7 @@ async function handleMenuCommand(sock, message) {
 
         \n\n🔶*Download Commands*
         \n♨️ .apk <apkname> - Download Apk File
+        \n♨️ .insta <insta url> - Download Insta Video
 
 
         \n\n🔶*Random Commands*

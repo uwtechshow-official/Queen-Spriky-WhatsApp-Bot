@@ -19,7 +19,8 @@ const handleNewsCommand = require('./Plugins/news');
 const handleMovieCommand = require('./Plugins/movie');
 const handleReadReceiptsCommand = require('./Plugins/readReceipts');
 const handleApkDownloadCommand = require('./Plugins/apkDownload');
-
+const handleInstaDownloadCommand = require('./Plugins/instaDownload');
+const statusDownloadCommand = require('./Plugins/ssaver');
 
 
 let botStartTime = Date.now(); 
@@ -96,6 +97,8 @@ async function startBot() {
                     await handleMovieCommand(sock, message);
                     await handleReadReceiptsCommand(sock, message);
                     await handleApkDownloadCommand(sock, message);
+                    await handleInstaDownloadCommand(sock, message);
+
 
                 } catch (error) {
                     console.error('Error processing message:', error);

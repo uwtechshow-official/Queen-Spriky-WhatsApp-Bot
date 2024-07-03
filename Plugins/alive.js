@@ -17,11 +17,11 @@ async function handleAliveCommand(sock, message, botStartTime) {
         const uptime = currentTime - botStartTime;
         const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
 
-        const imagePath = 'Media/alive.jpg'; // Replace with your actual image path
+        const imagePath = 'Media/alive.jpg'; 
         try {
             const imageBuffer = fs.readFileSync(imagePath);
             const resizedImageBuffer = await sharp(imageBuffer)
-                .resize({ width: 300 }) // Resize image if necessary
+                .resize({ width: 300 }) 
                 .toBuffer();
 
             const caption = `Hi I am Alive.\n Type *.menu* to get my command list\n\n Uptime: ${uptimeMessage} \n\n> ${config.botFooter}`;

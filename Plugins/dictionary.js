@@ -13,7 +13,7 @@ async function handleDefineCommand(sock, message) {
         }
 
         try {
-            await sock.sendMessage(remoteJid, { react: { text: '⌛', key: message.key } }); // Sending ⌛ reaction
+            await sock.sendMessage(remoteJid, { react: { text: '⌛', key: message.key } }); 
 
             const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
             const definition = response.data[0];
@@ -21,7 +21,7 @@ async function handleDefineCommand(sock, message) {
 
             await sock.sendMessage(remoteJid, { text: definitionMessage });
 
-            await sock.sendMessage(remoteJid, { react: { text: '✔️', key: message.key } }); // Sending ✔️ reaction
+            await sock.sendMessage(remoteJid, { react: { text: '✔️', key: message.key } }); 
         } catch (error) {
             console.error('Failed to fetch definition:', error);
             await sock.sendMessage(remoteJid, { text: 'Failed to fetch definition. Please try again later.\n\n> ' + config.botFooter });
