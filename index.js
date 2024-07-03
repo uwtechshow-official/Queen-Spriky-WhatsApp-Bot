@@ -23,6 +23,7 @@ const handleInstaDownloadCommand = require('./Plugins/instaDownload');
 const statusDownloadCommand = require('./Plugins/ssaver');
 
 
+
 let botStartTime = Date.now(); 
 
 async function startBot() {
@@ -98,7 +99,7 @@ async function startBot() {
                     await handleReadReceiptsCommand(sock, message);
                     await handleApkDownloadCommand(sock, message);
                     await handleInstaDownloadCommand(sock, message);
-
+                    //await statusDownloadCommand(sock, message);
 
                 } catch (error) {
                     console.error('Error processing message:', error);

@@ -24,7 +24,7 @@ async function handleAliveCommand(sock, message, botStartTime) {
                 .resize({ width: 300 }) 
                 .toBuffer();
 
-            const caption = `Hi I am Alive.\n Type *.menu* to get my command list\n\n Uptime: ${uptimeMessage} \n\n> ${config.botFooter}`;
+            const caption = `Hi I am Alive.\n Type *.menu* to get my command list\n\n Uptime: ${uptimeMessage} \n\n> Queen Spriky WhatsApp Bot 2024`;
 
             await sock.sendMessage(message.key.remoteJid, {
                 image: resizedImageBuffer,

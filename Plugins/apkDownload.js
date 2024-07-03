@@ -17,7 +17,7 @@ async function handleApkCommand(sock, message) {
         try {
             const results = await search(appName);
             if (results.length === 0) {
-                await sock.sendMessage(remoteJid, { text: `No results found for ${appName}\n\n> ${config.botFooter}` });
+                await sock.sendMessage(remoteJid, { text: `No results found for ${appName}\n\n> Queen Spriky WhatsApp Bot 2024` });
                 return;
             }
 
@@ -42,7 +42,7 @@ async function handleApkCommand(sock, message) {
                 },
                 mimetype: 'application/vnd.android.package-archive',
                 fileName: `${appDetails.package}.apk`,
-                caption: `Apk Name: ${appDetails.name}\nSize: ${appDetails.size}\nLast Update: ${appDetails.lastup}\n\n> ${config.botFooter}`
+                caption: `Apk Name: ${appDetails.name}\nSize: ${appDetails.size}\nLast Update: ${appDetails.lastup}\n\n> Queen Spriky WhatsApp Bot 2024`
             });
 
             fs.unlinkSync(filePath); 

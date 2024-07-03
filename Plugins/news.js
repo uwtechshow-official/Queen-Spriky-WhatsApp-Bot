@@ -23,7 +23,7 @@ async function handleNewsCommand(sock, message) {
 
         } catch (error) {
             console.error('Failed to fetch news headlines:', error);
-            await sock.sendMessage(remoteJid, { text: `Failed to fetch news headlines: ${error.message}\n\n> ${config.botFooter}` });
+            await sock.sendMessage(remoteJid, { text: `Failed to fetch news headlines: ${error.message}\n\n> Queen Spriky WhatsApp Bot 2024` });
         }
     }
 }

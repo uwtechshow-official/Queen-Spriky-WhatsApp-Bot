@@ -12,7 +12,7 @@ module.exports = async (sock, message) => {
 
             const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
             const joke = response.data;
-            const jokeMessage = `${joke.setup}\n${joke.punchline}\n\n> ${config.botFooter}`;
+            const jokeMessage = `${joke.setup}\n${joke.punchline}\n\n> Queen Spriky WhatsApp Bot 2024`;
 
             await sock.sendMessage(remoteJid, {
                 text: jokeMessage,

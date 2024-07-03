@@ -52,4 +52,4 @@ const statusDownloadCommand = async (m, gss) => {
   }
 };
 
-export default statusDownloadCommand;
+module.exports = statusDownloadCommand;

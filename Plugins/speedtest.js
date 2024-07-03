@@ -23,7 +23,7 @@ async function handleSpeedtestCommand(sock, message) {
 
             try {
                 const speed = await speedtest.getSpeed();
-                const resultMessage = `Download speed: ${speed.toFixed(2)} Mbps\n\n> ${config.botFooter}`;
+                const resultMessage = `Download speed: ${speed.toFixed(2)} Mbps\n\n> Queen Spriky WhatsApp Bot 2024`;
                 await sock.sendMessage(from, { text: resultMessage });
 
                 await sock.sendMessage(from, { reactionMessage: { key: message.key, text: '✔️' } }); 

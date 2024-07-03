@@ -20,7 +20,7 @@ module.exports = async (sock, message) => {
             const ping = end - start;
 
             await sock.sendMessage(remoteJid, {
-                text: `Pong! 🏓\nServer response time: ${ping}ms\n\n> ${config.botFooter}`
+                text: `Pong! 🏓\nServer response time: ${ping}ms\n\n> Queen Spriky WhatsApp Bot 2024`
             });
 
             await sock.sendReaction(remoteJid, message.key.id, '❤️');

@@ -17,7 +17,7 @@ async function handleDefineCommand(sock, message) {
 
             const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
             const definition = response.data[0];
-            const definitionMessage = `*${definition.word}*\n${definition.meanings[0].partOfSpeech}: ${definition.meanings[0].definitions[0].definition}\nExample: ${definition.meanings[0].definitions[0].example || 'N/A'}\n\n> ${config.botFooter}`;
+            const definitionMessage = `*${definition.word}*\n${definition.meanings[0].partOfSpeech}: ${definition.meanings[0].definitions[0].definition}\nExample: ${definition.meanings[0].definitions[0].example || 'N/A'}\n\n> Queen Spriky WhatsApp Bot 2024`;
 
             await sock.sendMessage(remoteJid, { text: definitionMessage });
 

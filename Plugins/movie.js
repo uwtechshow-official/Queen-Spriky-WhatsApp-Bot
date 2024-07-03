@@ -23,7 +23,7 @@ async function handleMovieCommand(sock, message) {
                 throw new Error(movie.Error || 'Movie not found.');
             }
 
-            const movieMessage = `*${movie.Title}*\n${movie.Plot}\n\nReleased: ${movie.Year}\nIMDB Rating: ${movie.imdbRating}\nType: ${movie.Type}\n\n> ${config.botFooter}`;
+            const movieMessage = `*${movie.Title}*\n${movie.Plot}\n\nReleased: ${movie.Year}\nIMDB Rating: ${movie.imdbRating}\nType: ${movie.Type}\n\n> Queen Spriky WhatsApp Bot 2024`;
 
 
             await sock.sendMessage(remoteJid, { text: movieMessage });
@@ -33,7 +33,7 @@ async function handleMovieCommand(sock, message) {
 
         } catch (error) {
             console.error('Failed to fetch movie information:', error);
-            await sock.sendMessage(remoteJid, { text: `Failed to fetch movie information: ${error.message}\n\n> ${config.botFooter}` });
+            await sock.sendMessage(remoteJid, { text: `Failed to fetch movie information: ${error.message}\n\n> Queen Spriky WhatsApp Bot 2024` });
         }
     }
 }

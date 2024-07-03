@@ -23,7 +23,7 @@ const handleInstaDownloadCommand = async (sock, message) => {
 
             if (result.success && result.data && result.data.length > 0) {
                 const mediaUrl = result.data[0].url_download; 
-                const caption = "\n\n> ${config.botFooter}";
+                const caption = "\n\n> Queen Spriky WhatsApp Bot 2024";
 
                 await sock.sendMessage(remoteJid, { video: { url: mediaUrl }, caption: caption }, { quoted: message });
                 await sock.sendMessage(remoteJid, { react: { text: '✅', key: message.key } });
