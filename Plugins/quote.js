@@ -1,4 +1,4 @@
-const config = require('.././config'); 
+const config = require('.././config');
 const axios = require('axios');
 
 module.exports = async (sock, message) => {
@@ -12,6 +12,10 @@ module.exports = async (sock, message) => {
             const quoteMessage = `"${quote.content}"\n- ${quote.author}\n\n> ${config.botFooter}`;
 
             await sock.sendMessage(remoteJid, { text: quoteMessage });
+
+            await sock.sendReaction(remoteJid, message.key.id, '❤️');
+
+            console.log(`Received command .quote from ${remoteJid}`);
         } catch (error) {
             console.error('Failed to fetch quote:', error);
             await sock.sendMessage(remoteJid, { text: 'Failed to fetch quote. Please try again later.' });

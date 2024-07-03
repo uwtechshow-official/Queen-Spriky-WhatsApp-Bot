@@ -1,6 +1,6 @@
 const fs = require('fs');
 const sharp = require('sharp');
-const config = require('../config'); // Ensure the correct path to the config file
+const config = require('.././config'); 
 
 async function handleMenuCommand(sock, message) {
     const remoteJid = message.key.remoteJid;
@@ -32,6 +32,10 @@ async function handleMenuCommand(sock, message) {
         \n♨️ .wiki <query> - Search Wikipedia
         \n♨️ .define <word> - Get the definition of a word
 
+        \n\n🔶*Download Commands*
+        \n♨️ .apk <apkname> - Download Apk File
+
+
         \n\n🔶*Random Commands*
         \n♨️ .joke - Get a random joke
         \n♨️ .quote - Get a random quote
@@ -41,19 +45,20 @@ async function handleMenuCommand(sock, message) {
         \n\n> ${config.botFooter}
         `;
 
-        const imagePath = 'Media/menu.jpg'; // Replace with your actual image path
+        const imagePath = 'Media/menu.jpg'; 
 
         try {
             const imageBuffer = fs.readFileSync(imagePath);
             const resizedImageBuffer = await sharp(imageBuffer)
-                .resize({ width: 300 }) // Resize image if necessary
+                .resize({ width: 300 }) 
                 .toBuffer();
 
-            // Reply to the original message sender
+            await sock.sendMessage(remoteJid, { react: { text: '🤖', key: message.key } });
+
             await sock.sendMessage(remoteJid, {
                 image: resizedImageBuffer,
                 caption: menuMessage,
-                quotedMessageId: message.messageID // Quote the original message
+                quotedMessageId: message.messageID 
             });
             console.log(`Replied to command .menu from ${remoteJid}`);
         } catch (error) {

@@ -30,7 +30,10 @@ async function handleAliveCommand(sock, message, botStartTime) {
                 image: resizedImageBuffer,
                 caption: caption
             });
-            console.log(`Received command from ${senderNumber}: ${conversation}`);
+
+            await sock.sendMessage(message.key.remoteJid, { react: { text: '❤️', key: message.key } });
+
+            console.log(`Received command from ${message.key.remoteJid}: ${message.message.conversation}`);
         } catch (error) {
             console.error('Failed to send alive message:', error);
         }

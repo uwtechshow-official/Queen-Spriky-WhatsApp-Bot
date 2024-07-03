@@ -17,7 +17,10 @@ const handleDictionaryCommand = require('./Plugins/dictionary');
 const handleTriviaCommand = require('./Plugins/trivia');
 const handleNewsCommand = require('./Plugins/news');
 const handleMovieCommand = require('./Plugins/movie');
-const handleReadReceiptsCommand = require('./plugins/readReceipts');
+const handleReadReceiptsCommand = require('./Plugins/readReceipts');
+const handleApkDownloadCommand = require('./Plugins/apkDownload');
+
+
 
 let botStartTime = Date.now(); 
 
@@ -69,25 +72,34 @@ async function startBot() {
         sock.ev.on('messages.upsert', async (m) => {
             const messages = m.messages;
             for (const message of messages) {
-                if (!message || !message.key || !message.key.remoteJid || !message.message) {
-                    console.error('Invalid message object:', message);
-                    continue;
-                }
+                try {
+                    if (!message || !message.key || !message.key.remoteJid || !message.message) {
+                        console.error('Invalid message object:', message);
+                        continue;
+                    }
 
-                await handleStatusSeen(sock, message);
-                await handleAliveCommand(sock, message, botStartTime);
-                await handleMenuCommand(sock, message);
-                await handlePingCommand(sock, message);
-                await handleSpeedtestCommand(sock, message);
-                await handleUptimeCommand(sock, message, botStartTime);
-                await handleJokeCommand(sock, message);
-                await handleQuoteCommand(sock, message);
-                await handleWikiCommand(sock, message);
-                await handleDictionaryCommand(sock, message);
-                await handleTriviaCommand(sock, message);
-                await handleNewsCommand(sock, message);
-                await handleMovieCommand(sock, message);
-                await handleReadReceiptsCommand(sock, message);
+                    const remoteJid = message.key.remoteJid;
+                    const text = message.message.conversation || message.message.extendedTextMessage?.text;
+
+                    await handleStatusSeen(sock, message);
+                    await handleAliveCommand(sock, message, botStartTime);
+                    await handleMenuCommand(sock, message);
+                    await handlePingCommand(sock, message);
+                    await handleSpeedtestCommand(sock, message);
+                    await handleUptimeCommand(sock, message, botStartTime);
+                    await handleJokeCommand(sock, message);
+                    await handleQuoteCommand(sock, message);
+                    await handleWikiCommand(sock, message);
+                    await handleDictionaryCommand(sock, message);
+                    await handleTriviaCommand(sock, message);
+                    await handleNewsCommand(sock, message);
+                    await handleMovieCommand(sock, message);
+                    await handleReadReceiptsCommand(sock, message);
+                    await handleApkDownloadCommand(sock, message);
+
+                } catch (error) {
+                    console.error('Error processing message:', error);
+                }
             }
         });
     } catch (error) {
