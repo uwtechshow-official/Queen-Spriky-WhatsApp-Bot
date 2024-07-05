@@ -1,4 +1,3 @@
-/*Uwindu meka blnnko*/
 const fs = require('fs');
 const config = require('.././config'); 
 //-------------------------

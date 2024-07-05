@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@bochilteam/scraper": "^4.2.4",
+    "@vitalets/google-translate-api": "^9.2.0",
     "@whiskeysockets/baileys": "^6.7.5",
     "api-dylux": "^1.8.4",
     "aptoide-scraper": "^1.0.1",
@@ -10,16 +12,21 @@
     "fluent-ffmpeg": "^2.1.3",
     "fs": "^0.0.1-security",
     "g-i-s": "^2.1.7",
+    "genius-lyrics": "^4.4.7",
+    "google-translate": "^2.3.0",
+    "megajs": "^1.3.0",
+    "mime-types": "^2.1.35",
     "node-fetch": "^2.7.0",
     "node-html-parser": "^6.1.13",
     "qrcode-terminal": "^0.12.0",
     "sharp": "^0.32.6",
     "tiktok-scraper": "^1.4.36",
     "unsplash-js": "^7.0.19",
+    "wa-sticker-formatter": "^4.4.4",
     "webp-converter": "^2.3.3",
     "ytdl-core": "^4.11.5"
   },
-  "name": "status-queen-whatsapp-bot",
+  "name": "queen-spriky-whatsapp-bot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -28,5 +35,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "This Is A Status Seen WhatsApp Bot Developed By Udavin"
+  "description": "This Is A  WhatsApp Bot Developed By Udavin"
 }

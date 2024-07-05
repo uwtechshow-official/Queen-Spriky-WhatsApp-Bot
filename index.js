@@ -19,10 +19,14 @@ const handleNewsCommand = require('./Plugins/news');
 const handleMovieCommand = require('./Plugins/movie');
 const handleReadReceiptsCommand = require('./Plugins/readReceipts');
 const handleApkDownloadCommand = require('./Plugins/apkDownload');
-const handleInstaDownloadCommand = require('./Plugins/instaDownload');
-const statusDownloadCommand = require('./Plugins/ssaver');
-
-
+const handleIpGeolocationCommand = require('./Plugins/ipGeolocation');
+const handleGitHubCommand = require('./Plugins/github');
+const handleTranslationCommand = require('./Plugins/translation');
+const handleLyricsCommand = require('./Plugins/lyricsCommand');
+const handleTinyUrlCommand = require('./Plugins/tinyUrlCommand');
+const handleMegaCommand = require('./Plugins/megaCommand');
+const handleMediafireCommand = require('./Plugins/mediafireCommand');
+const handleTikTokCommand = require('./Plugins/tiktokCommand');
 
 let botStartTime = Date.now(); 
 
@@ -62,7 +66,7 @@ async function startBot() {
 
                     await sock.sendMessage(botNumber, {
                         image: resizedImageBuffer,
-                        caption: `STATUS QUEEN BOT IS CONNECTED 🥳...\n 🤖 Bot Name : *${config.botName}*\n 🤖 Bot Number : ${config.botNumber} \n 🤖 Developed By : *Udavin* \n Made With Love ❤️\n If You Want Help Join Our WhatsApp Group I am Ready To Help\n\n https://chat.whatsapp.com/EieFsPEnrPnERM6GXPF162`
+                        caption: `${config.botName} IS CONNECTED 🥳...\n 🤖 Bot Name : *${config.botName}*\n 🤖 Bot Number : ${config.botNumber} \n 🤖 Owner Number : *${config.ownerNumber}* \n 🤖 Developed By : *Udavin* \n Made With Love ❤️\n If You Want Help Join Our WhatsApp Group I am Ready To Help\n\n https://chat.whatsapp.com/EieFsPEnrPnERM6GXPF162`
                     });
                     console.log('Initial status message sent successfully.');
                 } catch (error) {
@@ -98,9 +102,14 @@ async function startBot() {
                     await handleMovieCommand(sock, message);
                     await handleReadReceiptsCommand(sock, message);
                     await handleApkDownloadCommand(sock, message);
-                    await handleInstaDownloadCommand(sock, message);
-                    //await statusDownloadCommand(sock, message);
-
+                    await handleIpGeolocationCommand(sock, message); 
+                    await handleGitHubCommand(sock, message);                   
+                    await handleTranslationCommand(sock, message);
+                    await handleLyricsCommand(sock, message);
+                    await handleTinyUrlCommand(sock, message);
+                    await handleMegaCommand(sock, message);
+                    await handleMediafireCommand(sock, message);
+                    await handleTikTokCommand(sock, message);
                 } catch (error) {
                     console.error('Error processing message:', error);
                 }

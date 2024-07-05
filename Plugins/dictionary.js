@@ -8,7 +8,7 @@ async function handleDefineCommand(sock, message) {
     if (text && text.startsWith('.define')) {
         const word = text.split(' ')[1];
         if (!word) {
-            await sock.sendMessage(remoteJid, { text: 'Please provide a word to define.\n\n> ' + config.botFooter });
+            await sock.sendMessage(remoteJid, { text: 'Please provide a word to define.🙁\n\n> ' + config.botFooter });
             return;
         }
 
@@ -24,7 +24,7 @@ async function handleDefineCommand(sock, message) {
             await sock.sendMessage(remoteJid, { react: { text: '✔️', key: message.key } }); 
         } catch (error) {
             console.error('Failed to fetch definition:', error);
-            await sock.sendMessage(remoteJid, { text: 'Failed to fetch definition. Please try again later.\n\n> ' + config.botFooter });
+            await sock.sendMessage(remoteJid, { text: 'Failed to fetch definition. Please try again later.🙁\n\n> ' + config.botFooter });
         }
     }
 }

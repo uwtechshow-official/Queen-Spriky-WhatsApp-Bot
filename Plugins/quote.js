@@ -13,7 +13,7 @@ module.exports = async (sock, message) => {
 
             await sock.sendMessage(remoteJid, { text: quoteMessage });
 
-            await sock.sendReaction(remoteJid, message.key.id, '❤️');
+            //await sock.sendReaction(remoteJid, message.key.id, '❤️');
 
             console.log(`Received command .quote from ${remoteJid}`);
         } catch (error) {

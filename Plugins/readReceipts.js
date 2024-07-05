@@ -14,9 +14,11 @@ module.exports = async (sock, message) => {
         const command = text.trim().toLowerCase();
         if (command === '.readon') {
             config.readReceiptsEnabled = true;
+            console.log('Read receipts turned ON.');
             await sock.sendMessage(remoteJid, { text: 'Read receipts turned ON.' });
         } else if (command === '.readoff') {
             config.readReceiptsEnabled = false;
+            console.log('Read receipts turned OFF.');
             await sock.sendMessage(remoteJid, { text: 'Read receipts turned OFF.' });
         }
     }

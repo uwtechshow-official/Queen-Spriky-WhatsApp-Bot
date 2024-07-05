@@ -1,4 +1,4 @@
-const config = require('../config');
+const config = require('../config'); // Adjust path as necessary
 const FastSpeedtest = require('fast-speedtest-api');
 
 async function handleSpeedtestCommand(sock, message) {
@@ -7,8 +7,6 @@ async function handleSpeedtestCommand(sock, message) {
         const from = message.key.remoteJid;
 
         if (text?.trim() === '.speedtest') {
-            await sock.sendMessage(from, { reactionMessage: { key: message.key, text: '⌛' } }); 
-
             const speedtest = new FastSpeedtest({
                 token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', 
                 verbose: false,
@@ -25,8 +23,6 @@ async function handleSpeedtestCommand(sock, message) {
                 const speed = await speedtest.getSpeed();
                 const resultMessage = `Download speed: ${speed.toFixed(2)} Mbps\n\n> Queen Spriky WhatsApp Bot 2024`;
                 await sock.sendMessage(from, { text: resultMessage });
-
-                await sock.sendMessage(from, { reactionMessage: { key: message.key, text: '✔️' } }); 
                 console.log(`Speed test result sent to ${from}`);
             } catch (err) {
                 console.error('Speed test error:', err);

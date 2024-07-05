@@ -1,4 +1,6 @@
-const config = require('../config'); 
+// uptime.js
+
+const config = require('../config'); // Adjust path as necessary
 
 function formatDuration(ms) {
     const seconds = Math.floor((ms / 1000) % 60);
@@ -21,20 +23,11 @@ async function handleUptimeCommand(sock, message, botStartTime) {
     }
 
     if (text.startsWith('.uptime')) {
-        try {
-            await sock.sendMessage(message.key.remoteJid, { reactionMessage: { key: message.key, text: '⌛' } }); 
+        const currentTime = Date.now();
+        const uptime = currentTime - botStartTime;
+        const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
 
-            const currentTime = Date.now();
-            const uptime = currentTime - botStartTime;
-            const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
-
-            await sock.sendMessage(message.key.remoteJid, { text: uptimeMessage });
-
-            await sock.sendMessage(message.key.remoteJid, { reactionMessage: { key: message.key, text: '✔️' } }); 
-        } catch (error) {
-            console.error('Failed to send uptime command:', error);
-            await sock.sendMessage(message.key.remoteJid, { text: 'Failed to fetch uptime. Please try again later.' });
-        }
+        await sock.sendMessage(message.key.remoteJid, { text: uptimeMessage });
     }
 }
 
