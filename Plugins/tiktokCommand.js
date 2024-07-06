@@ -46,7 +46,6 @@ const handler = async (sock, message) => {
             { url: videoUrl }
         );
 
-        await sock.sendReaction(message.key.remoteJid, message.key.id, '✔️');
 
     } catch (error) {
         console.error('Error handling TikTok command:', error);

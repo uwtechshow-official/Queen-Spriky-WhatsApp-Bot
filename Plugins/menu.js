@@ -34,7 +34,6 @@ async function handleMenuCommand(sock, message) {
 
 
         \n\n🦄*Search Commands*
-        \n🤘 .movie <query> - Search for a movie(Not Working Still)
         \n🤘 .news <country> - Get the latest news articles
         \n🤘 .wiki <query> - Search Wikipedia
         \n🤘 .define <word> - Get the definition of a word
@@ -43,7 +42,8 @@ async function handleMenuCommand(sock, message) {
 
 
         \n\n🦄*Download Commands*
-        \n🤙 .insta <insta url> - Download Insta Video (Not Working Still)
+        \n🤙 .insta <insta url> - Download Insta Video / Photo 
+        \n🤙 .yt <youtube url> - Download Youtube Video
         \n🤙 .tiktok <tiktok url> - Download Tiktok Video
         \n🤙 .mega <mega url> - Download Mega File
         \n🤙 .apk <apkname> - Download Apk File
