@@ -1,9 +1,14 @@
-const fetch = require('node-fetch');
+// Use require.resolve to get the path to node-fetch and then require it
+//const fetch = require(require.resolve('node-fetch'));
+//const fetch = require('node-fetch').default;
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+//const { default: fetch } = await import('node-fetch');
+const config = require('../config');
 
 async function handleTinyUrlCommand(sock, message) {
     const remoteJid = message.key.remoteJid;
     const text = message.message.conversation || message.message.extendedTextMessage?.text;
-    
+
     if (text && text.startsWith('.shorturl')) {
         const args = text.split(' ').slice(1);
         const urlToShorten = args[0];
@@ -14,7 +19,11 @@ async function handleTinyUrlCommand(sock, message) {
         }
 
         try {
-            const shortUrlResponse = await fetch(`https://tinyurl.com/api-create.php?url=${urlToShorten}`);
+            const shortUrlResponse = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(urlToShorten)}`);
+
+            if (!shortUrlResponse.ok) {
+                throw new Error(`Failed to generate short URL. Status: ${shortUrlResponse.status}`);
+            }
             const shortUrl = await shortUrlResponse.text();
 
             if (!shortUrl) {
@@ -22,10 +31,10 @@ async function handleTinyUrlCommand(sock, message) {
                 return;
             }
 
-            const replyMessage = `*Here Is Your Url!!*\n\n*Original Link:*\n${urlToShorten}\n*Shortened URL:*\n${shortUrl}\n\n> Queen Spriky WhatsApp Bot 2024`;
+            const replyMessage = `*Shortened URL:*\n${shortUrl}\n\n*Original Link:*\n${urlToShorten}\n\n> ${config.botFooter}`;
             await sock.sendMessage(remoteJid, { text: replyMessage });
         } catch (error) {
-            console.error(error);
+            console.error('Failed to shorten URL:', error);
             await sock.sendMessage(remoteJid, { text: 'Failed to shorten URL. Please try again later. 🙁' });
         }
     }

@@ -42,7 +42,7 @@ async function handleApkCommand(sock, message) {
                 },
                 mimetype: 'application/vnd.android.package-archive',
                 fileName: `${appDetails.package}.apk`,
-                caption: `Apk Name: ${appDetails.name}\nSize: ${appDetails.size}\nLast Update: ${appDetails.lastup}\n Downloaded By Queen Spriky WhatsApp Bot\n\n> Queen Spriky WhatsApp Bot 2024`
+                caption: `Apk Name: ${appDetails.name}\nSize: ${appDetails.size}\nLast Update: ${appDetails.lastup}\n\n> Queen Spriky WhatsApp Bot 2024`
             });
 
             fs.unlinkSync(filePath); 

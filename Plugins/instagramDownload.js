@@ -5,7 +5,7 @@ const apiBaseUrl = 'https://www.guruapi.tech/api/igdlv1?url=';
 const instaDownload = async (m, Matrix) => {
     try {
         if (!m || !m.message) {
-            console.error('Invalid message object:', m);
+            //console.error('Invalid message object:', m);
             return;
         }
 
@@ -23,7 +23,7 @@ const instaDownload = async (m, Matrix) => {
         }
 
         if (!body) {
-            console.error('No valid message body found:', m.message);
+            //console.error('No valid message body found:', m.message);
             return;
         }
 

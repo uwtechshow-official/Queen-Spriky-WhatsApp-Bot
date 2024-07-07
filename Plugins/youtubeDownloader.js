@@ -6,7 +6,7 @@ async function handleYoutubeDownload(sock, message) {
     try {
         // Ensure message object and its properties exist
         if (!message || !message.key || !message.key.remoteJid || !message.message) {
-            console.error('Invalid message object:', message);
+            //console.error('Invalid message object:', message);
             return;
         }
 
@@ -43,7 +43,7 @@ async function handleYoutubeDownload(sock, message) {
                 const mediaBuffer = fs.readFileSync(videoPath);
                 await sock.sendMessage(message.key.remoteJid, {
                     video: mediaBuffer,
-                    caption: `Downloaded: ${videoTitle}`
+                    caption: `Downloaded By Queen Spriky WhatsApp Bot`
                 });
 
                 // Clean up the downloaded video file

@@ -1,5 +1,4 @@
 const fs = require('fs');
-const sharp = require('sharp');
 const config = require('.././config'); 
 
 async function handleMenuCommand(sock, message) {
@@ -63,14 +62,11 @@ async function handleMenuCommand(sock, message) {
 
         try {
             const imageBuffer = fs.readFileSync(imagePath);
-            const resizedImageBuffer = await sharp(imageBuffer)
-                .resize({ width: 300 }) 
-                .toBuffer();
 
             await sock.sendMessage(remoteJid, { react: { text: '🤖', key: message.key } });
 
             await sock.sendMessage(remoteJid, {
-                image: resizedImageBuffer,
+                image: imageBuffer,
                 caption: menuMessage,
                 quotedMessageId: message.messageID 
             });

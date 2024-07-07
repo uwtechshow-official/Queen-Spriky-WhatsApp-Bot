@@ -41,7 +41,7 @@ const handler = async (sock, message) => {
             {
                 video: { url: videoUrl },
                 mimetype: mimeType || 'video/mp4',
-            caption: `*Here is your Requested TikTok video*\n\n*Author*: ${author.nickname}\nDownloaded By Queen Spriky WhatsApp Bot`
+            caption: `*Here is your Requested TikTok video*\n\nDownloaded By Queen Spriky WhatsApp Bot`
             },
             { url: videoUrl }
         );

@@ -30,7 +30,7 @@ async function handleMediafireCommand(sock, message) {
                 document: { url: res.url },
                 fileName: res.filename,
                 mimetype,
-                caption: `Apk Name: ${res.filename}\nSize: ${res.size}\nDownloaded By Queen Spriky WhatsApp Bot${footer}`
+                caption: `Apk Name: ${res.filename}\nSize: ${res.size}\nDownloaded By Queen Spriky WhatsApp Bot`
             }, { quoted: message });
 
         } catch (error) {
