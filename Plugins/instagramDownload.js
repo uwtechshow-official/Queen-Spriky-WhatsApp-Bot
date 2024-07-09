@@ -5,7 +5,6 @@ const apiBaseUrl = 'https://www.guruapi.tech/api/igdlv1?url=';
 const instaDownload = async (m, Matrix) => {
     try {
         if (!m || !m.message) {
-            //console.error('Invalid message object:', m);
             return;
         }
 

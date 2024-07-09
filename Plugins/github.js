@@ -6,7 +6,7 @@ module.exports = async (sock, message) => {
     const msg = message.message;
 
     if (!remoteJid || !msg) {
-        console.error('remoteJid or message content is undefined');
+        //console.error('remoteJid or message content is undefined');
         return;
     }
 

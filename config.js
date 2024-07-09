@@ -7,9 +7,9 @@ module.exports = {
     botFooter: 'Queen Spriky WhatsApp Bot 2024',
     newsapiKey: '9918f3780ca349d69864e0739ca86333',//News Api Key
     FastnetapiKey: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm',//Speed Test Api Key 
-    RemovebgAPI: 'RApN6va3mPZPo3Wp5FfvKA64',//Replace With Your Own API On www.remove.bg 
-    movieApiKey: '',//Movie Api Key
-    readReceiptsEnabled: true, //Type True Or False
-    autoStatusSeenEnabled: true // Type True Or False
-    
+    autoStatusSeenEnabled: true, // Type True Or False
+    owner: {
+        name: 'Udavin Wijesundara',//Type Your Name
+        phoneNumber: '94758900210'//Type your Number For the Owner Vcard
+    },
 };

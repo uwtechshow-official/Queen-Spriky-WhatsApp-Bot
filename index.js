@@ -28,7 +28,6 @@ const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
 const { handleYoutubeDownload } = require('./Plugins/youtubeDownloader');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
-const handleFbVideoDownload = require('./Plugins/fbVideoDownloader');
 
 let botStartTime = Date.now();
 
@@ -122,7 +121,6 @@ async function startBot() {
                     await handleTikTokCommand(sock, message);
                     await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
-                    await handleFbVideoDownload(sock, message);
                 } catch (error) {
                     console.error('Error processing message:', error);
                 }

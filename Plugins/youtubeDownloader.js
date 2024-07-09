@@ -6,7 +6,6 @@ async function handleYoutubeDownload(sock, message) {
     try {
         // Ensure message object and its properties exist
         if (!message || !message.key || !message.key.remoteJid || !message.message) {
-            //console.error('Invalid message object:', message);
             return;
         }
 

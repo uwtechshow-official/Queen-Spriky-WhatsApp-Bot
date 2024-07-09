@@ -6,33 +6,28 @@ async function handleMenuCommand(sock, message) {
     const msg = message.message;
 
     if (!remoteJid || !msg) {
-        console.error('remoteJid or message content is undefined');
         return;
     }
 
     const text = msg.conversation || msg.extendedTextMessage?.text;
     if (text && text.trim() === '.menu') {
         const menuMessage = `\n🎁Bot Name : ${config.botName}\n\n🎁Bot Version : ${config.version}\n\n🎁Bot Author : ${config.botAuthor}\n\n🎁Prefix: Multi Prefix\n\n Here are the available commands:
-        \n*🦄Owner Commands*
-        \n✌️ .statusseen on - Turn on status seen
-        \n✌️ .statusseen off - Turn off status seen
-        \n✌️ .readon - Turn on read receipts
-        \n✌️ .readoff - Turn off read receipts
-        
-        \n\n🦄*General Commands*
+
+    
+        \n\n*🦄General Commands*
         \n👋 .alive - Check if the bot is alive
         \n👋 .speedtest - Check the network speed
         \n👋 .ping - Check the ping time of the bot
         \n👋 .uptime - Check the uptime of the bot
         \n👋 .ip - Find Your Ip Adreess
 
-        \n\n🦄*User Commands*
+        \n\n*🦄User Commands*
         \n👉 .translate <lang> <text> - Tranlate the english Text To Other Languages
         \n👉 .shorturl <link> - Generate short urls for the given url
         
 
 
-        \n\n🦄*Search Commands*
+        \n\n*🦄Search Commands*
         \n🤘 .news <country> - Get the latest news articles
         \n🤘 .wiki <query> - Search Wikipedia
         \n🤘 .define <word> - Get the definition of a word
@@ -40,7 +35,7 @@ async function handleMenuCommand(sock, message) {
         \n🤘 .lyrics <song name> - Search for the lyrics
 
 
-        \n\n🦄*Download Commands*
+        \n\n*🦄Download Commands*
         \n🤙 .insta <insta url> - Download Insta Video / Photo 
         \n🤙 .yt <youtube url> - Download Youtube Video
         \n🤙 .tiktok <tiktok url> - Download Tiktok Video
@@ -49,11 +44,11 @@ async function handleMenuCommand(sock, message) {
         \n🤙 .mediafire <mediafire url> - Download Mediafire File
 
 
-        \n\n🦄*Random Commands*
+        \n\n*🦄Random Commands*
         \n👏 .joke - Get a random joke
         \n👏 .quote - Get a random quote
 
-        \n\n🦄*Game Commands*
+        \n\n*🦄Game Commands*
         \n🤟 .trivia - Play the trivia game
         \n\n> ${config.botFooter}
         `;

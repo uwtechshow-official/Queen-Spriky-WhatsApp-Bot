@@ -18,7 +18,6 @@ async function handleUptimeCommand(sock, message, botStartTime) {
     } else if (message.body) {
         text = message.body.trim();
     } else {
-        //console.error('Invalid message structure:', message);
         return;
     }
 

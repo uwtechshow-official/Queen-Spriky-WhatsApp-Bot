@@ -10,8 +10,8 @@ function formatDuration(ms) {
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-async function handleAliveCommand(sock, message, botStartTime) {
-    if (message.message.conversation.startsWith('.alive')) {
+async function handleScriptCommand(sock, message, botStartTime) {
+    if (message.message.conversation.startsWith('.script')) {
         const currentTime = Date.now();
         const uptime = currentTime - botStartTime;
         const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
@@ -20,7 +20,7 @@ async function handleAliveCommand(sock, message, botStartTime) {
         try {
             const imageBuffer = fs.readFileSync(imagePath);
 
-            const caption = `Hi I am ${config.botName}.\n Uptime: ${uptimeMessage}\nType *.menu* to get my command list\nJoin Our WhatsApp Group\n https://chat.whatsapp.com/Jx2dvOAzNaO3vm5bwVglyC \n\n> Queen Spriky WhatsApp Bot 2024`;
+            const caption = `This Is My Script\nhttps://github.com/uwtechshow-official/Queen-Spriky-WhatsApp-Bot \n\n> Queen Spriky WhatsApp Bot 2024`;
 
             await sock.sendMessage(message.key.remoteJid, {
                 image: imageBuffer,
@@ -36,4 +36,4 @@ async function handleAliveCommand(sock, message, botStartTime) {
     }
 }
 
-module.exports = handleAliveCommand;
+module.exports = handleScriptCommand;

@@ -5,7 +5,6 @@
 [![Bot Version](https://img.shields.io/badge/Bot%20Version-v1.0-blue)]()
 [![Last Update](https://img.shields.io/badge/Last%20Update-July%202024-brightgreen)]()
 [![Developer](https://img.shields.io/badge/Developer-Udavin%Wijesundara-orange)]()
-[![Supporters](https://img.shields.io/badge/Supporters-Your%20Supporters-lightgrey)]()
 
 ---
 
