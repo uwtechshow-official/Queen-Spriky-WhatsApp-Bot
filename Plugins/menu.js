@@ -11,45 +11,56 @@ async function handleMenuCommand(sock, message) {
 
     const text = msg.conversation || msg.extendedTextMessage?.text;
     if (text && text.trim() === '.menu') {
-        const menuMessage = `\n🎁Bot Name : ${config.botName}\n\n🎁Bot Version : ${config.version}\n\n🎁Bot Author : ${config.botAuthor}\n\n🎁Prefix: Multi Prefix\n\n Here are the available commands:
+        const menuMessage = `\n🎁Bot Name : ${config.botName}\n\n🎁Bot Version : ${config.version}\n\n🎁Bot Author : ${config.botAuthor}\n\n🎁Prefix: . \n\n Here are the available commands:
+        \n\n
+╭──── 〔 *Owner Commands* 〕
+┊・ 👉| Will Be Available Soon \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *General Commands* 〕
+┊・ 👉| .alive - Send Alive Message \n
+┊・ 👉| .speedtest - Check The Network Speed \n
+┊・ 👉| .ping Check Pin Time With Bot \n
+┊・ 👉| .uptime Check The Uptime Of Bot \n
+┊・ 👉| .ip - Get Your IP Address \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *Group Commands* 〕
+┊・ 👉| .promote - Give Admin For Someone \n
+┊・ 👉| .demote - Remove Admin From Someone \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *User Commands* 〕
+┊・ 👉| .translate <language> <text> - Translate English To Given Language \n
+┊・ 👉| .shorturl - Generate Short URLs \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *Search Commands* 〕
+┊・ 👉| .news <Country> - Get Latest News \n
+┊・ 👉| .wiki <Query> - Search On Wikipedia \n
+┊・ 👉| .difine <Word> -Get Definition Of A Word \n
+┊・ 👉| .github username/repository - Fetch Information of a GitHub repository \n
+┊・ 👉| .lyrics <song name> - Search for the lyrics \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *Download Commands* 〕
+┊・ 👉| .insta <insta url> - Download Insta Video / Photo  \n
+┊・ 👉| .yt <youtube url> - Download Youtube Video \n
+┊・ 👉| .tiktok <tiktok url> - Download Tiktok Video \n
+┊・ 👉| .mega <mega url> - Download Mega File \n
+┊・ 👉| .apk <apkname> - Download Apk File \n
+┊・ 👉| .mediafire <mediafire url> - Download Mediafire File \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *Random Commands* 〕
+┊・ 👉| .joke - Get a random joke  \n
+┊・ 👉| .quote - Get a random quote \n
+╰┈┈┈┈┈┈┈┈
+\n\n
+╭──── 〔 *Game Commands* 〕
+┊・ 👉| .trivia - Play the trivia game  \n
+╰┈┈┈┈┈┈┈┈
 
-    
-        \n\n*🦄General Commands*
-        \n👋 .alive - Check if the bot is alive
-        \n👋 .speedtest - Check the network speed
-        \n👋 .ping - Check the ping time of the bot
-        \n👋 .uptime - Check the uptime of the bot
-        \n👋 .ip - Find Your Ip Adreess
-
-        \n\n*🦄User Commands*
-        \n👉 .translate <lang> <text> - Tranlate the english Text To Other Languages
-        \n👉 .shorturl <link> - Generate short urls for the given url
-        
-
-
-        \n\n*🦄Search Commands*
-        \n🤘 .news <country> - Get the latest news articles
-        \n🤘 .wiki <query> - Search Wikipedia
-        \n🤘 .define <word> - Get the definition of a word
-        \n🤘 .github username/repository - Fetch Information of a GitHub repository
-        \n🤘 .lyrics <song name> - Search for the lyrics
-
-
-        \n\n*🦄Download Commands*
-        \n🤙 .insta <insta url> - Download Insta Video / Photo 
-        \n🤙 .yt <youtube url> - Download Youtube Video
-        \n🤙 .tiktok <tiktok url> - Download Tiktok Video
-        \n🤙 .mega <mega url> - Download Mega File
-        \n🤙 .apk <apkname> - Download Apk File
-        \n🤙 .mediafire <mediafire url> - Download Mediafire File
-
-
-        \n\n*🦄Random Commands*
-        \n👏 .joke - Get a random joke
-        \n👏 .quote - Get a random quote
-
-        \n\n*🦄Game Commands*
-        \n🤟 .trivia - Play the trivia game
         \n\n> ${config.botFooter}
         `;
 

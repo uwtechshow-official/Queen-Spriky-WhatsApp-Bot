@@ -1,6 +1,7 @@
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 const crypto = require('crypto');
+const path = require('path');
 
 async function handleYoutubeDownload(sock, message) {
     try {
@@ -14,15 +15,15 @@ async function handleYoutubeDownload(sock, message) {
         if (text && text.startsWith('.yt ')) {
             const youtubeLink = text.slice(4).trim();
             try {
-                const videoInfo = await ytdl.getInfo(youtubeLink);
+                const videoInfo = await ytdl.getBasicInfo(youtubeLink);
                 const videoTitle = videoInfo.videoDetails.title;
 
                 // Sanitize the title
                 const sanitizedTitle = videoTitle.replace(/[\/\\:*?"<>|]/g, '_');
 
-                // Generate a random filename
+                // Generate a random filename with MP4 extension
                 const randomString = crypto.randomBytes(6).toString('hex');
-                const videoPath = `Temp/${randomString}_${sanitizedTitle}.mp4`;
+                const videoPath = path.join('Temp', `${randomString}.mp4`);
 
                 // Create the Temp directory if it doesn't exist
                 const tempDir = 'Temp';
@@ -30,25 +31,37 @@ async function handleYoutubeDownload(sock, message) {
                     fs.mkdirSync(tempDir);
                 }
 
-                // Download the video
-                await new Promise((resolve, reject) => {
-                    ytdl.downloadFromInfo(videoInfo, { quality: 'highest' })
-                        .pipe(fs.createWriteStream(videoPath))
-                        .on('finish', resolve)
-                        .on('error', reject);
+                // Download the video stream
+                const videoStream = ytdl(youtubeLink);
+
+                videoStream.once('response', () => {
+                    console.log('Download started:', videoTitle);
                 });
 
-                // Send the video as a message
+                // Pipe video stream to a writable stream
+                const writableStream = fs.createWriteStream(videoPath);
+                videoStream.pipe(writableStream);
+
+                // Wait for download to complete
+                await new Promise((resolve, reject) => {
+                    writableStream.on('finish', resolve);
+                    writableStream.on('error', reject);
+                });
+
+                // Read the video file as buffer
                 const mediaBuffer = fs.readFileSync(videoPath);
+
+                // Send the video as a message
                 await sock.sendMessage(message.key.remoteJid, {
                     video: mediaBuffer,
-                    caption: `Downloaded By Queen Spriky WhatsApp Bot`
+                    caption: `Downloaded from YouTube: ${sanitizedTitle}`
                 });
 
                 // Clean up the downloaded video file
                 fs.unlinkSync(videoPath);
             } catch (error) {
                 console.error('Error downloading or sending YouTube video:', error);
+                await sock.sendMessage(message.key.remoteJid, { text: `Error: ${error.message}` });
             }
         }
     } catch (error) {

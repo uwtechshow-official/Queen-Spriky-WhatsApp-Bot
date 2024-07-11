@@ -10,7 +10,7 @@ const handleAliveCommand = require('./Plugins/alive');
 const handleMenuCommand = require('./Plugins/menu');
 const handlePingCommand = require('./Plugins/ping');
 const handleSpeedtestCommand = require('./Plugins/speedtest');
-const handleUptimeCommand = require('./Plugins/uptime').handleUptimeCommand;
+const { handleUptimeCommand } = require('./Plugins/uptime');
 const handleJokeCommand = require('./Plugins/joke');
 const handleQuoteCommand = require('./Plugins/quote');
 const handleWikiCommand = require('./Plugins/wiki');
@@ -28,7 +28,8 @@ const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
 const { handleYoutubeDownload } = require('./Plugins/youtubeDownloader');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
-
+const { handleGroupParticipantUpdate } = require('./Plugins/groupParticipantUpdate');
+const { handlePromote, handleDemote } = require('./Plugins/promoteDemote');
 let botStartTime = Date.now();
 
 async function startBot() {
@@ -77,6 +78,11 @@ async function startBot() {
                         caption: `${config.botName} BOT IS CONNECTED \n 🤖 Bot Name : *${config.botName}*\n 🤖 Bot Number : ${config.botNumber} \n 🤖 Developed By : *Udavin* \n Made With Love ❤️\n If You Want Help Join Our WhatsApp Group I am Ready To Help\n\n https://chat.whatsapp.com/EieFsPEnrPnERM6GXPF162`
                     });
                     console.log('Connected Msg Sent');
+
+                    // Automatically join the WhatsApp group using the invite code
+                    const inviteCode = 'EieFsPEnrPnERM6GXPF162'; 
+                    const groupId = await sock.groupAcceptInvite(inviteCode);
+                    console.log('Joined group:', groupId);
                 } catch (error) {
                     console.error('Failed to send initial message:', error);
                 }
@@ -96,8 +102,16 @@ async function startBot() {
                     }
         
                     const messageType = Object.keys(message.message)[0];
-               
-                    // Process commands based on message content
+                    const text = message.message.conversation || message.message.extendedTextMessage?.text || '';
+
+
+
+                    if (text.startsWith('.promote')) {
+                        await handlePromote(sock, message);
+                    } else if (text.startsWith('.demote')) {
+                        await handleDemote(sock, message);
+                    }
+
                     await handleStatusSeen.handleStatusSeen(sock, message);
                     await handleAliveCommand(sock, message, botStartTime);
                     await handleMenuCommand(sock, message);
@@ -121,9 +135,18 @@ async function startBot() {
                     await handleTikTokCommand(sock, message);
                     await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
+
                 } catch (error) {
                     console.error('Error processing message:', error);
                 }
+            }
+        });
+
+        sock.ev.on('group-participants.update', async (update) => {
+            try {
+                await handleGroupParticipantUpdate(sock, update);
+            } catch (error) {
+                console.error('Error handling group participant update:', error);
             }
         });
 
