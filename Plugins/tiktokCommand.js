@@ -44,7 +44,7 @@ const handler = async (sock, message) => {
             caption: `*Here is your Requested TikTok video*\n\nDownloaded By Queen Spriky WhatsApp Bot`
             },
             { url: videoUrl }
-        );
+        ),{ quoted: message };
 
 
     } catch (error) {

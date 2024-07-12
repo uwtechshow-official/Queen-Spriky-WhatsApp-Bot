@@ -50,7 +50,7 @@ async function handleMegaCommand(sock, message) {
                 mimetype: mimetype,
                 fileName: file.name,
                 caption: caption
-            });
+            }),{ quoted: message };
 
             await sock.sendMessage(remoteJid, { react: { text: '✅', key: message.key } });
 

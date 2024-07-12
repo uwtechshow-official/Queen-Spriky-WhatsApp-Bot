@@ -1,4 +1,4 @@
-const config = require('.././config'); 
+const config = require('.././config');
 const fs = require('fs');
 
 function formatDuration(ms) {
@@ -11,25 +11,36 @@ function formatDuration(ms) {
 }
 
 async function handleAliveCommand(sock, message, botStartTime) {
-    if (message.message.conversation.startsWith('.alive')) {
+    const remoteJid = message.key.remoteJid;
+    const senderId = message.key.participant || remoteJid;
+    const text = message.message.conversation || message.message.extendedTextMessage?.text;
+
+    if (text && text.startsWith('.alive')) {
         const currentTime = Date.now();
         const uptime = currentTime - botStartTime;
         const uptimeMessage = `Bot Uptime: ${formatDuration(uptime)}`;
 
-        const imagePath = 'Media/alive.jpg'; 
+        const imagePath = 'Media/alive.jpg';
         try {
             const imageBuffer = fs.readFileSync(imagePath);
 
-            const caption = `Hi I am ${config.botName}.\n Uptime: ${uptimeMessage}\nType *.menu* to get my command list\nJoin Our WhatsApp Group\n https://chat.whatsapp.com/Jx2dvOAzNaO3vm5bwVglyC \n\n> Queen Spriky WhatsApp Bot 2024`;
+            const caption = `
+Hi @${senderId.split('@')[0]},\n
+I am ${config.botName}.\n
+Uptime: ${uptimeMessage}\n
+Type *.menu* to get my command list\n
+Join Our WhatsApp Group: https://chat.whatsapp.com/Jx2dvOAzNaO3vm5bwVglyC\n\n
+> Queen Spriky WhatsApp Bot 2024`;
 
-            await sock.sendMessage(message.key.remoteJid, {
+            await sock.sendMessage(remoteJid, {
                 image: imageBuffer,
-                caption: caption
-            });
+                caption: caption,
+                mentions: [senderId]
+            }, { quoted: message });
 
-            await sock.sendMessage(message.key.remoteJid, { react: { text: '❤️', key: message.key } });
+            await sock.sendMessage(remoteJid, { react: { text: '❤️', key: message.key } });
 
-            console.log(`Received command from ${message.key.remoteJid}: ${message.message.conversation}`);
+            console.log(`Received command from ${remoteJid}: ${text}`);
         } catch (error) {
             console.error('Failed to send alive message:', error);
         }

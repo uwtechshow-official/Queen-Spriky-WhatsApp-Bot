@@ -26,10 +26,15 @@ const handleTinyUrlCommand = require('./Plugins/tinyUrlCommand');
 const handleMegaCommand = require('./Plugins/megaCommand');
 const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
-const { handleYoutubeDownload } = require('./Plugins/youtubeDownloader');
+const handleYoutubeDownload = require('./Plugins/youtubeDownload');
+const handleFacebookDownload = require('./Plugins/facebookDownload');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
 const { handleGroupParticipantUpdate } = require('./Plugins/groupParticipantUpdate');
 const { handlePromote, handleDemote } = require('./Plugins/promoteDemote');
+const handleYoutubeMp3Download = require('./Plugins/youtubeMp3Download');
+const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
+const handleTwitterDownload = require('./Plugins/twitterDownload');
+const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
 let botStartTime = Date.now();
 
 async function startBot() {
@@ -110,6 +115,24 @@ async function startBot() {
                         await handlePromote(sock, message);
                     } else if (text.startsWith('.demote')) {
                         await handleDemote(sock, message);
+                    }
+                    if (text.startsWith('.fb')) {
+                        await handleFacebookDownload(sock, message);
+                    }
+                    if (text.startsWith('.yt')) {
+                        await handleYoutubeDownload(sock, message);
+                    }
+                    if (text.startsWith('.ytmp3')) {
+                        await handleYoutubeMp3Download(sock, message);
+                    }
+                    if (text.startsWith('.scdl')) {
+                        await handleSoundCloudDownload(sock, message);
+                    }
+                    if (text.startsWith('.twitterdl')) {
+                        await handleTwitterDownload(sock, message);
+                    }
+                    if (text.startsWith('.gdrivedl')) {
+                        await handleGoogleDriveDownload(sock, message);
                     }
 
                     await handleStatusSeen.handleStatusSeen(sock, message);
