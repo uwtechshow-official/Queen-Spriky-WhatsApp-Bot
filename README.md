@@ -1,10 +1,8 @@
-<!-- Add your bot logo or header image here -->
-
-# WhatsApp Bot Repo
+# Queen Spriky WhatsApp Bot
 
 [![Bot Version](https://img.shields.io/badge/Bot%20Version-v1.0-blue)]()
 [![Last Update](https://img.shields.io/badge/Last%20Update-July%202024-brightgreen)]()
-[![Developer](https://img.shields.io/badge/Developer-Udavin%Wijesundara-orange)]()
+[![Developer]( https://img.shields.io/badge/Developer-Udavin-8A2BE2)]()
 
 ---
 
@@ -21,6 +19,44 @@ Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is 
 - [WhatsApp Bot Group](https://chat.whatsapp.com/Jx2dvOAzNaO3vm5bwVglyC)
 
 ---
+
+## Run On Vps / Termux
+
+```
+Fork The Repo
+
+Change config.js as you wish
+
+sudo apt update
+
+sudo apt install git
+
+sudo apt install nodejs npm
+
+git clone https://github.com/uwtechshow-official/Queen-Spriky-WhatsApp-Bot
+
+cd Queen-Spriky-WhatsApp-Bot
+
+npm install
+
+node index.js
+```
+
+## Run On Replit
+
+```
+Fork The Repo
+
+Change config.js as you wish (Add Owner Number,Bot Number)
+
+Copy Your Github Url
+
+
+
+npm install
+
+node index.js
+```
 
 ## Main Command Categories
 
@@ -39,5 +75,3 @@ Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is 
 - **YouTube:** [UW TECH SHOW](https://www.youtube.com/@uwtechshow)
 
 ---
-
-
