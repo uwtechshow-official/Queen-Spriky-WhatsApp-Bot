@@ -161,7 +161,7 @@ async function startBot() {
                     await handleTikTokCommand(sock, message);
                     await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
-                    await handleytdlCommand(message, sock);
+                    await handleytDownload(message, sock);
 
                 } catch (error) {
                     console.error('Error processing message:', error);
