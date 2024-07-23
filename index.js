@@ -36,6 +36,7 @@ const handleYoutubeMp3Download = require('./Plugins/youtubeMp3Download');
 const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
 const handleTwitterDownload = require('./Plugins/twitterDownload');
 const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
+const handleytDownload = require('./Plugins/yttest');
 
 let botStartTime = Date.now();
 
@@ -121,9 +122,9 @@ async function startBot() {
                     if (text.startsWith('.fb')) {
                         await handleFacebookDownload(sock, message);
                     }
-                    if (text.startsWith('.yt')) {
+                    /*if (text.startsWith('.yt')) {
                         await handleYoutubeDownload(sock, message);
-                    }
+                    }*/
                     if (text.startsWith('.ytmp3')) {
                         await handleYoutubeMp3Download(sock, message);
                     }
