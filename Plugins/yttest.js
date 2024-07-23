@@ -15,12 +15,12 @@ class Ytdl {
 
         const requestHeaders = {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Accept': '/',
+            'Accept': '*/*',
             'X-Requested-With': 'XMLHttpRequest'
         };
 
         try {
-            const response = await axios.post(${this.baseUrl}/mates/analyzeV2/ajax, requestData, {
+            const response = await axios.post(`${this.baseUrl}/mates/analyzeV2/ajax`, requestData, {
                 headers: requestHeaders
             });
 
@@ -29,7 +29,7 @@ class Ytdl {
             return responseData;
         } catch (error) {
             if (error.response) {
-                console.error(HTTP error! status: ${error.response.status});
+                console.error(`HTTP error! status: ${error.response.status}`);
             } else {
                 console.error('Axios error: ', error.message);
             }
@@ -44,14 +44,14 @@ class Ytdl {
 
         const requestHeaders = {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Accept': '/',
+            'Accept': '*/*',
             'X-Requested-With': 'XMLHttpRequest',
             'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36',
-            'Referer': ${this.baseUrl}/youtube/${videoId}
+            'Referer': `${this.baseUrl}/youtube/${videoId}`
         };
 
         try {
-            const response = await axios.post(${this.baseUrl}/mates/convertV2/index, requestData, {
+            const response = await axios.post(`${this.baseUrl}/mates/convertV2/index`, requestData, {
                 headers: requestHeaders
             });
 
@@ -60,7 +60,7 @@ class Ytdl {
             return responseData;
         } catch (error) {
             if (error.response) {
-                console.error(HTTP error! status: ${error.response.status});
+                console.error(`HTTP error! status: ${error.response.status}`);
             } else {
                 console.error('Axios error: ', error.message);
             }
