@@ -1,5 +1,3 @@
-*[ SCRAPER Y2MATE ]*
-
 const axios = require('axios');
 
 class Ytdl {
@@ -102,6 +100,3 @@ async function y2mate(link) {
 }
 
 module.exports = { y2mate }
-
-*Credits :* +62 878-1766-4450
-*Mampir om :* https://whatsapp.com/channel/0029Vaegj9sLCoX4Gs3cl50n
