@@ -36,7 +36,7 @@ const handleYoutubeMp3Download = require('./Plugins/youtubeMp3Download');
 const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
 const handleTwitterDownload = require('./Plugins/twitterDownload');
 const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
-const handleytDownload = require('./Plugins/yttest');
+const handley2mate = require('./Plugins/yttest');
 
 let botStartTime = Date.now();
 
@@ -161,7 +161,7 @@ async function startBot() {
                     await handleTikTokCommand(sock, message);
                     await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
-                    await handleytDownload(message, sock);
+                    await handley2mate(message, sock);
 
                 } catch (error) {
                     console.error('Error processing message:', error);
