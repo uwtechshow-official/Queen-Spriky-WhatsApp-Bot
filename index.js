@@ -27,6 +27,7 @@ const handleMegaCommand = require('./Plugins/megaCommand');
 const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
 const handleYoutubeDownload = require('./Plugins/youtubeDownload');
+const handleytdlCommand = require('./Plugins/ytdl.js');
 const handleFacebookDownload = require('./Plugins/facebookDownload');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
 const { handleGroupParticipantUpdate } = require('./Plugins/groupParticipantUpdate');
@@ -35,6 +36,7 @@ const handleYoutubeMp3Download = require('./Plugins/youtubeMp3Download');
 const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
 const handleTwitterDownload = require('./Plugins/twitterDownload');
 const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
+
 let botStartTime = Date.now();
 
 async function startBot() {
@@ -158,6 +160,7 @@ async function startBot() {
                     await handleTikTokCommand(sock, message);
                     await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
+                    await handleytdlCommand(message, sock);
 
                 } catch (error) {
                     console.error('Error processing message:', error);
