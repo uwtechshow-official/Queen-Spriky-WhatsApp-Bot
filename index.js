@@ -18,7 +18,6 @@ const handleDictionaryCommand = require('./Plugins/dictionary');
 const handleTriviaCommand = require('./Plugins/trivia');
 const handleNewsCommand = require('./Plugins/news');
 const handleApkDownloadCommand = require('./Plugins/apkDownload');
-const handleIpGeolocationCommand = require('./Plugins/ipGeolocation');
 const handleGitHubCommand = require('./Plugins/github');
 const handleTranslationCommand = require('./Plugins/translation');
 const handleLyricsCommand = require('./Plugins/lyricsCommand');
@@ -26,17 +25,15 @@ const handleTinyUrlCommand = require('./Plugins/tinyUrlCommand');
 const handleMegaCommand = require('./Plugins/megaCommand');
 const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
-const handleYoutubeDownload = require('./Plugins/youtubeDownload');
 const handleytdlCommand = require('./Plugins/ytdl.js');
 const handleFacebookDownload = require('./Plugins/facebookDownload');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
 const { handleGroupParticipantUpdate } = require('./Plugins/groupParticipantUpdate');
 const { handlePromote, handleDemote } = require('./Plugins/promoteDemote');
-const handleYoutubeMp3Download = require('./Plugins/youtubeMp3Download');
 const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
 const handleTwitterDownload = require('./Plugins/twitterDownload');
 const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
-const handley2mate = require('./Plugins/yttest');
+const handley2mate = require('./Plugins/ytdownload');
 
 let botStartTime = Date.now();
 
@@ -76,8 +73,6 @@ async function startBot() {
                 try {
                     const image = await Jimp.read(imagePath);
                     
-                    // Resize the image if needed
-                    image.resize(256, 256); // Resize to 256x256 pixels
 
                     const imageBuffer = await image.getBufferAsync(Jimp.MIME_JPEG);
 
@@ -101,8 +96,6 @@ async function startBot() {
             const messages = m.messages;
             for (const message of messages) {
                 try {
-                    // Log the incoming message for inspection
-                    //console.log('Incoming message:', JSON.stringify(message, null, 2));
         
                     if (!message || !message.key || !message.message) {
                         //console.error('Invalid message object:', JSON.stringify(message, null, 2));
@@ -122,19 +115,13 @@ async function startBot() {
                     if (text.startsWith('.fb')) {
                         await handleFacebookDownload(sock, message);
                     }
-                    /*if (text.startsWith('.yt')) {
-                        await handleYoutubeDownload(sock, message);
-                    }*/
-                    if (text.startsWith('.ytmp3')) {
-                        await handleYoutubeMp3Download(sock, message);
-                    }
                     if (text.startsWith('.scdl')) {
                         await handleSoundCloudDownload(sock, message);
                     }
                     if (text.startsWith('.twitterdl')) {
                         await handleTwitterDownload(sock, message);
                     }
-                    if (text.startsWith('.gdrivedl')) {
+                    if (text.startsWith('.gdrive')) {
                         await handleGoogleDriveDownload(sock, message);
                     }
 
@@ -151,7 +138,6 @@ async function startBot() {
                     await handleTriviaCommand(sock, message);
                     await handleNewsCommand(sock, message);
                     await handleApkDownloadCommand(sock, message);
-                    await handleIpGeolocationCommand(sock, message);
                     await handleGitHubCommand(sock, message);
                     await handleTranslationCommand(sock, message);
                     await handleLyricsCommand(sock, message);
@@ -159,7 +145,6 @@ async function startBot() {
                     await handleMegaCommand(sock, message);
                     await handleMediafireCommand(sock, message);
                     await handleTikTokCommand(sock, message);
-                    await handleYoutubeDownload(sock, message);
                     await handleInstagramDownloadCommand(message, sock);
                     await handley2mate(message, sock);
 
