@@ -7,6 +7,7 @@ const Jimp = require('jimp');
 const config = require('./config');
 const handleStatusSeen = require('./Plugins/statusSeen');
 const handleAliveCommand = require('./Plugins/alive');
+const handleScriptCommand = require('./Plugins/script');
 const handleMenuCommand = require('./Plugins/menu');
 const handlePingCommand = require('./Plugins/ping');
 const handleSpeedtestCommand = require('./Plugins/speedtest');
@@ -97,7 +98,6 @@ async function startBot() {
                 try {
         
                     if (!message || !message.key || !message.message) {
-                        //console.error('Invalid message object:', JSON.stringify(message, null, 2));
                         continue;
                     }
         
@@ -126,6 +126,7 @@ async function startBot() {
 
                     await handleStatusSeen.handleStatusSeen(sock, message);
                     await handleAliveCommand(sock, message, botStartTime);
+                    await handleScriptCommand(sock, message, botStartTime);                   
                     await handleMenuCommand(sock, message);
                     await handlePingCommand(sock, message);
                     await handleSpeedtestCommand(sock, message);

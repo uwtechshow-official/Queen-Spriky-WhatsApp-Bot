@@ -50,15 +50,13 @@ async function handleMenuCommand(sock, message) {
 \n\n
 ╭──── 〔 *Download Commands* 〕\n
 ┊・ 👉| .insta <insta url> - Download Insta Video / Photo\n
-┊・ 👉| .yt <youtube url> - Download YouTube Video (Still Not Working 100%)\n
-┊・ 👉| .ytmp3 <youtube url> - Download YouTube Audio (Still Not Working 100%)\n
-┊・ 👉| .fb <facebook url> - Download Facebook Video\n
 ┊・ 👉| .tiktok <tiktok url> - Download TikTok Video\n
 ┊・ 👉| .mega <mega url> - Download Mega File\n
 ┊・ 👉| .apk <apkname> - Download Apk File\n
 ┊・ 👉| .mediafire <mediafire url> - Download Mediafire File\n
 ┊・ 👉| .scdl <sound cloud url> - Download Audio File\n
 ┊・ 👉| .twitterdl <twitter url> - Download Twitter Video\n
+┊・ 👉| .gdrive <google drive url> - Download Google Drive\n
 ╰┈┈┈┈┈┈┈┈
 \n\n
 ╭──── 〔 *Random Commands* 〕\n

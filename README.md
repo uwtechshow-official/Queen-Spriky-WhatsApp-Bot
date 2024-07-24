@@ -1,14 +1,22 @@
-# Queen Spriky WhatsApp Bot
+<div class = "repo" align = "center">
+<a href = "#">
+<img src = "repo/logo.jpg"  width="500" height="500">
+</img>
+
+ <p align="center">
+  <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=ff00ab&center=true&vCenter=true&multiline=false&lines=QUEEN+SPRIKY+WHATSAPP+BOT" alt="">
+</p>
+
 
 [![Bot Version](https://img.shields.io/badge/Bot%20Version-v1.0-blue)]()
 [![Last Update](https://img.shields.io/badge/Last%20Update-July%202024-brightgreen)]()
 [![Developer]( https://img.shields.io/badge/Developer-Udavin-8A2BE2)]()
 
 ---
-
+</div>
 ## Overview
 
-Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is designed to enhance your WhatsApp experience with various commands and features.
+Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is designed to enhance your WhatsApp experience with various commands and features. Please note that We are not responsible for account bans<br>(Use At Your Own Risk)
 
 ---
 
@@ -20,42 +28,57 @@ Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is 
 
 ---
 
-## Run On Vps / Termux
+## How To Deploy
+ - _Fork the repository._
+ - _Link with whatsapp using pair code._
+ - _Open Config.js and put `botNumber` and `ownerNumber` and change other settings._
+ - _Deploy using your platform._
+   </br>
 
+## Fork Repository
+
+<a href="https://github.com/uwtechshow-official/Queen-Spriky-WhatsApp-Bot/fork"><img src="https://img.shields.io/badge/Fork Repository-red" alt="Fork Repository" width="150"></a>
+
+## Generate Session
+
+<a href="https://replit.com/@sweetheartsorry/Queen-Spriky-WhatsApp-Bot-Pair"><img src="https://img.shields.io/badge/Generate Session-greeen" alt="Get Session File" width="150"></a>
+
+## Deploy Using Your Platform
+
+<a href="https://replit.com/@sweetheartsorry/Queen-Spriky-WhatsApp-Bot-Pair"><img src="https://img.shields.io/badge/Deploy On Heroku-purple" alt="Deploy On Heroku" width="150" ></a><br>
+<a href="https://replit.com/@sweetheartsorry/Queen-Spriky-WhatsApp-Bot-Pair"><img src="https://img.shields.io/badge/Deploy On Replit-red" alt="Deploy On Replit" width="150"></a><br>
+<a href="https://replit.com/@sweetheartsorry/Queen-Spriky-WhatsApp-Bot-Pair"><img src="https://img.shields.io/badge/Deploy On Codespace-fuchsia" alt="Deploy On Codespace" width="150" ></a>
+
+## Run Terminal(Ubuntu)
+
+Update dependencies
+
+```bash
+  apt update
 ```
-Fork The Repo
 
-Change config.js as you wish
+Clone the project
 
-sudo apt update
-
-sudo apt install git
-
-sudo apt install nodejs npm
-
-git clone https://github.com/uwtechshow-official/Queen-Spriky-WhatsApp-Bot
-
-cd Queen-Spriky-WhatsApp-Bot
-
-npm install
-
-node index.js
+```bash
+  git clone https://github.com/uwtechshow-official/Queen-Spriky-WhatsApp-Bot
 ```
 
-## Run On Replit
+Go to the project directory
 
+```bash
+  cd Queen-Spriky-WhatsApp-Bot
 ```
-Fork The Repo
 
-Change config.js as you wish (Add Owner Number,Bot Number)
+Install dependencies
 
-Copy Your Github Url
+```bash
+  npm install
+```
 
+Start the server
 
-
-npm install
-
-node index.js
+```bash
+  npm start
 ```
 
 ## Main Command Categories
@@ -75,3 +98,7 @@ node index.js
 - **YouTube:** [UW TECH SHOW](https://www.youtube.com/@uwtechshow)
 
 ---
+## Authors
+
+- [@Udavin Wijesundara](https://github.com/uwtechshow-official)
+- [@Vima Mods](https://github.com/vimamodz)

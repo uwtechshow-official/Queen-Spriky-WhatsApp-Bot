@@ -4,7 +4,7 @@ async function handleGoogleDriveDownload(sock, message) {
     const text = message.message.conversation || message.message.extendedTextMessage?.text || '';
     const args = text.split(' ').slice(1);
 
-    if (!text.startsWith('.gdrivedl') || args.length === 0) {
+    if (!text.startsWith('.gdrive') || args.length === 0) {
         return;
     }
 
