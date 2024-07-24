@@ -25,7 +25,6 @@ const handleTinyUrlCommand = require('./Plugins/tinyUrlCommand');
 const handleMegaCommand = require('./Plugins/megaCommand');
 const handleMediafireCommand = require('./Plugins/mediafireCommand');
 const handleTikTokCommand = require('./Plugins/tiktokCommand');
-const handleytdlCommand = require('./Plugins/ytdl.js');
 const handleFacebookDownload = require('./Plugins/facebookDownload');
 const handleInstagramDownloadCommand = require('./Plugins/instagramDownload');
 const { handleGroupParticipantUpdate } = require('./Plugins/groupParticipantUpdate');
