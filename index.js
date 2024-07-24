@@ -33,7 +33,7 @@ const { handlePromote, handleDemote } = require('./Plugins/promoteDemote');
 const handleSoundCloudDownload = require('./Plugins/soundCloudDownload');
 const handleTwitterDownload = require('./Plugins/twitterDownload');
 const handleGoogleDriveDownload = require('./Plugins/googleDriveDownload');
-const handley2mate = require('./Plugins/ytdownload');
+const handley2mate = require('./Plugins/ytDownload');
 
 let botStartTime = Date.now();
 
