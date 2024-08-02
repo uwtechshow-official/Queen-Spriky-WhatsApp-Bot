@@ -14,6 +14,7 @@
 
 ---
 </div>
+
 ## Overview
 
 Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is designed to enhance your WhatsApp experience with various commands and features. Please note that We are not responsible for account bans<br>(Use At Your Own Risk)
