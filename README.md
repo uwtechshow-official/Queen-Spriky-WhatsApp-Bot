@@ -41,7 +41,7 @@ Welcome to the GitHub repository for **Queen Spriky WhatsApp Bot**! This bot is 
 
 ## Generate Session
 
-<a href="https://replit.com/@botudavin/Queen-Spriky-WhatsApp-Bot-Pair?v=1"><img src="https://img.shields.io/badge/Generate Session-greeen" alt="Get Session File" width="150"></a>
+<a href="https://replit.com/@botudavin/Queen-Spriky-WhatsApp-Bot-Pair"><img src="https://img.shields.io/badge/Generate Session-greeen" alt="Get Session File" width="150"></a>
 
 ## Deploy Using Your Platform
 
